@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text protonValue;
     public TMP_Text isotopeValue;
 
+    [Header("Possible Nuclei")]
+    public List<Nucleus> nuclei;
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,11 @@ public class GameManager : MonoBehaviour
     private GameObject createPlayer()
     {
         return Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+    }
+
+    public Nucleus getNucleus(int protons)
+    {
+        return nuclei[protons - 1];
     }
 
     public void changeProtonText(int value)

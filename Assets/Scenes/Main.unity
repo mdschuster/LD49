@@ -5460,6 +5460,10 @@ MonoBehaviour:
   neutronValue: {fileID: 1762531594}
   protonValue: {fileID: 1619784842}
   isotopeValue: {fileID: 1454325702}
+  nuclei:
+  - {fileID: 11400000, guid: 02c4662072334fd488984d00b175f0ae, type: 2}
+  - {fileID: 11400000, guid: 00e0f61f1f6e002449561a9859a4c496, type: 2}
+  - {fileID: 11400000, guid: 30e365be6f2b1a64bb149b9d760db293, type: 2}
 --- !u!4 &874182681
 Transform:
   m_ObjectHideFlags: 0

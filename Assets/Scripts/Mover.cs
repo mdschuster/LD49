@@ -24,7 +24,7 @@ public class Mover : MonoBehaviour
 
     public bool coreNucleon = false;
 
-    public static event Action<string> nucleonAdded;
+    public static event Action<Mover> nucleonAdded;
 
 
     // Start is called before the first frame update
@@ -69,6 +69,16 @@ public class Mover : MonoBehaviour
             this.transform.localPosition = pos;
 
         }
+        else if (currentState == ParticleState.DECAY)
+        {
+            //pick random direction
+            Vector3 dir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), 0f) - this.transform.position;
+            Vector3 pos = this.transform.position;
+            //moveAmount = dir.normalized;
+            pos.x += moveAmount.x * speed * Time.deltaTime;
+            pos.y += moveAmount.y * speed * Time.deltaTime;
+            this.transform.position = pos;
+        }
     }
 
     public void setInitialMovement(Vector3 dir)
@@ -82,11 +92,11 @@ public class Mover : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
-        if (currentState == ParticleState.FREE && other.CompareTag("Player"))
+        if (currentState == ParticleState.FREE && other.CompareTag("Player") && currentState != ParticleState.DECAY)
         {
             currentState = ParticleState.CAPTURED;
             this.transform.SetParent(other.transform);
-            nucleonAdded?.Invoke(nucleonType);
+            nucleonAdded?.Invoke(this);
 
         }
     }
@@ -98,11 +108,21 @@ public class Mover : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        if (currentState == ParticleState.CAPTURED && other.gameObject.CompareTag("nucleon"))
+        if (currentState == ParticleState.CAPTURED && other.gameObject.CompareTag("nucleon") && currentState != ParticleState.DECAY)
         {
             //moveAmount = Vector3.zero;
             currentState = ParticleState.NUCLEUS;
             //rigidbody.isKinematic = true;
         }
+    }
+
+    public void decay()
+    {
+        currentState = ParticleState.DECAY;
+        rigidbody.isKinematic = true;
+        speed = 30;
+        transform.parent = null;
+        GetComponent<SphereCollider>().isTrigger = true;
+        GetComponentInChildren<Jitter>().enabled = false;
     }
 }
