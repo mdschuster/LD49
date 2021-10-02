@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 6902978619794515444}
   - component: {fileID: 6319742319529481589}
   - component: {fileID: 5083688672847951497}
+  - component: {fileID: 6821865952537951284}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -141,3 +142,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6821865952537951284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2780487110896388110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33db466c4adf78c4f8f554276e1bca70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jitterAmount: 0.05

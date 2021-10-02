@@ -1524,9 +1524,9 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0.037735805, b: 0.5754717, a: 0}
-        key1: {r: 0.9607843, g: 0, b: 0.03840568, a: 1}
-        key2: {r: 1, g: 0.41929486, b: 0.042452812, a: 0.9137255}
-        key3: {r: 0.41509432, g: 0.17345339, b: 0, a: 0}
+        key1: {r: 0.43400002, g: 0, b: 0.018338017, a: 1}
+        key2: {r: 0.5176471, g: 0.019607857, b: 0.2965204, a: 0.9137255}
+        key3: {r: 0.189, g: 0.078452826, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
@@ -5115,7 +5115,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5387,7 +5387,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 15
+    OrthographicSize: 20
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
