@@ -44,8 +44,11 @@ public class SpawnManager : MonoBehaviour
             Vector3 spawnPos = spawnCenter.transform.position + dir;
 
             //instantiate neutron or proton
-            GameObject toSpawn = (Random.Range(0f, 1f) < 0.5f) ? neutron : proton;
+            float randNum = Random.Range(0f, 1f);
+            GameObject toSpawn = (randNum < 0.5f) ? neutron : proton;
             GameObject go = Instantiate(toSpawn, spawnPos, Quaternion.identity);
+            go.GetComponent<Mover>().nucleonType = (randNum < 0.5f) ? "neutron" : "proton";
+
 
             //set movement direction of newly spawned particle
             Vector3 randomOffset = new Vector3(Random.Range(0f, 0.5f), Random.Range(0f, 0.5f), 0f);
