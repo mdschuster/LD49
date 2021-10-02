@@ -39,9 +39,17 @@ public class GameManager : MonoBehaviour
     public TMP_Text neutronValue;
     public TMP_Text protonValue;
     public TMP_Text isotopeValue;
+    public TMP_Text decayText;
 
     [Header("Possible Nuclei")]
     public List<Nucleus> nuclei;
+
+    [Header("Prefabs")]
+    public GameObject betaNeutronPrefab;
+    public GameObject betaProtonPrefab;
+    public GameObject neutrinoPrefab;
+    public GameObject electronPrefab;
+
 
 
     // Start is called before the first frame update
@@ -54,11 +62,7 @@ public class GameManager : MonoBehaviour
         isotopeValue.text = "Hydrogen-1";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     private GameObject createPlayer()
     {
@@ -83,6 +87,19 @@ public class GameManager : MonoBehaviour
     public void changeIsotopeText(string value)
     {
         isotopeValue.text = value;
+    }
+
+    public void updateDecayText(float time, string decayType)
+    {
+
+        if (decayType != "Stable")
+        {
+            decayText.text = decayType.ToUpper() + " Decay in: " + time.ToString("00");
+        }
+        else
+        {
+            decayText.text = decayType.ToUpper();
+        }
     }
 
 

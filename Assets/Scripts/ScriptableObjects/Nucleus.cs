@@ -7,6 +7,7 @@ public class Nucleus : ScriptableObject
 {
     public string nucleus = "Nucleus";
     public int protons = 0;
+    public int baseNeutrons = 0;
 
     public List<int> neutrons;
 

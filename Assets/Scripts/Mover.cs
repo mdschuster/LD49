@@ -125,4 +125,13 @@ public class Mover : MonoBehaviour
         GetComponent<SphereCollider>().isTrigger = true;
         GetComponentInChildren<Jitter>().enabled = false;
     }
+
+    public void setCaptured()
+    {
+        currentState = ParticleState.CAPTURED;
+    }
+    public void setNucleus()
+    {
+        currentState = ParticleState.NUCLEUS;
+    }
 }

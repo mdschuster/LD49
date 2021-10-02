@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     {
         getMovement();
         decay();
+        updateDecayText();
     }
 
     /// <summary>
@@ -55,17 +56,19 @@ public class Player : MonoBehaviour
     public void decay()
     {
 
-        if (decayTime <= 0 && currentNucleus.decayType[numNeutrons] != "Stable")
+        if (decayTime <= 0 && currentNucleus.decayType[numNeutrons - currentNucleus.baseNeutrons] != "Stable")
         {
             print("Decay Called");
 
-            string decayType = currentNucleus.decayType[numNeutrons];
+            string decayType = currentNucleus.decayType[numNeutrons - currentNucleus.baseNeutrons];
             List<GameObject> nucleonsToChange = new List<GameObject>();
             switch (decayType)
             {
                 case ("B-"):
+                    triggerBminusDecay();
                     break;
                 case ("B+"):
+                    triggerBplusDecay();
                     break;
                 case ("p"):
                     //find a proton
@@ -161,6 +164,7 @@ public class Player : MonoBehaviour
             }
         }
         decayTime -= Time.deltaTime;
+
     }
 
     private void getMovement()
@@ -199,7 +203,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            decayTime = currentNucleus.decayTime[numNeutrons];
+            decayTime = currentNucleus.decayTime[numNeutrons - currentNucleus.baseNeutrons];
         }
     }
 
@@ -219,8 +223,75 @@ public class Player : MonoBehaviour
         children.Remove(nucleon);
 
         GameManager.instance().changeIsotopeText(currentNucleus.name + "-" + (numNeutrons + numProtons).ToString());
+        if (numNeutrons > currentNucleus.neutrons.Count)
+        {
+            //decay neutron immediately
+            decayTime = -1f;
+        }
+        else
+        {
+            decayTime = currentNucleus.decayTime[numNeutrons - currentNucleus.baseNeutrons];
+        }
+    }
+
+    private void triggerBminusDecay()
+    {
+        //neutron to proton
+        //find a neutron
+        Vector3 pos;
+        Mover nucleon = null;
+        foreach (Mover m in children)
+        {
+            if (m.nucleonType == "neutron")
+            {
+                nucleon = m;
+                break;
+            }
+        }
+        if (nucleon == null)
+        {
+            Debug.LogError("No neutrons for B- decay");
+        }
+        pos = nucleon.transform.position;
+        removeNucleon(nucleon);
+        Destroy(nucleon.gameObject);
+        GameObject go = Instantiate(GameManager.instance().betaProtonPrefab, pos, Quaternion.identity);
+        GameObject go1 = Instantiate(GameManager.instance().electronPrefab, pos, Quaternion.identity);
+        GameObject go2 = Instantiate(GameManager.instance().neutrinoPrefab, pos, Quaternion.identity);
+        go.GetComponent<Mover>().nucleonType = "proton";
+        //go.GetComponent<Mover>().setNucleus();
+        //addNucleon(go.GetComponent<Mover>());
 
     }
+    private void triggerBplusDecay()
+    {
+        //proton to neutron
+        //find a neutron
+        Vector3 pos;
+        Mover nucleon = null;
+        foreach (Mover m in children)
+        {
+            if (m.nucleonType == "proton" && !m.coreNucleon)
+            {
+                nucleon = m;
+                break;
+            }
+        }
+        if (nucleon == null)
+        {
+            Debug.LogError("No neutrons for B+ decay");
+        }
+        pos = nucleon.transform.position;
+        removeNucleon(nucleon);
+        Destroy(nucleon.gameObject);
+        GameObject go = Instantiate(GameManager.instance().betaNeutronPrefab, pos, Quaternion.identity);
+        GameObject go1 = Instantiate(GameManager.instance().electronPrefab, pos, Quaternion.identity);
+        GameObject go2 = Instantiate(GameManager.instance().neutrinoPrefab, pos, Quaternion.identity);
+        go.GetComponent<Mover>().nucleonType = "neutron";
+        //go.GetComponent<Mover>().setNucleus();
+        //addNucleon(go.GetComponent<Mover>());
+    }
+
 
     private void changeCurrentNucleus()
     {
@@ -232,6 +303,11 @@ public class Player : MonoBehaviour
         string value = "";
         isotopeDict.TryGetValue(numProtons, out value);
         return value;
+    }
+
+    private void updateDecayText()
+    {
+        GameManager.instance().updateDecayText(decayTime, currentNucleus.decayType[numNeutrons]);
     }
 
     private void setupDict()
