@@ -5133,7 +5133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 141, y: -319}
+  m_AnchoredPosition: {x: 66, y: -319}
   m_SizeDelta: {x: 165, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &202809225
@@ -5264,8 +5264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -14, y: 7}
-  m_SizeDelta: {x: 509.8, y: 690.4}
+  m_AnchoredPosition: {x: -14, y: 31.2}
+  m_SizeDelta: {x: 509.8, y: 802.54}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &679372855
 MonoBehaviour:
@@ -5287,35 +5287,42 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Nuclear Soup!
+  m_text: 'Welcome to Nucleon Soup!
+
+
+    Controls:
+
+
+    Arrow keys to move the
+    nucleus.
 
 
     Goal:
 
 
-    Starting from the humble proton
-    (Hydrogen-1), try to get to a stable isotope of Neon (Neon-20, Neon-21, or Neon-22)
-    before the timer runs out.
+    Starting from the humble proton (Hydrogen-1), try
+    to get to a stable isotope of Neon (Neon-20, Neon-21, or Neon-22) before the
+    timer runs out.
 
 
     Terminology:
 
 
-    n Decay (Neutron Emission)
-    - Decay where one or more neutrons are ejected from the nucleus
+    n Decay (Neutron Emission) - Decay where
+    one or more neutrons are ejected from the nucleus
 
 
-    p Decay
-    (Proton Emission)- A rare form of decay where one or more Protons are ejected
-    from the nucleus
+    p Decay (Proton Emission)-
+    A rare form of decay where one or more Protons are ejected from the nucleus
 
 
-    B+ Decay (Beta Plus) - A proton is converted into a neutron
-    while releasing a positron and a neutrino
+    B+
+    Decay (Beta Plus) - A proton is converted into a neutron while releasing a positron
+    and a neutrino
 
 
-    B- Decay (Beta Minus) - A neutron
-    is converted into a proton while releasing an electron and a neutrino'
+    B- Decay (Beta Minus) - A neutron is converted into a proton
+    while releasing an electron and a neutrino'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5906,8 +5913,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 97, y: -104}
-  m_SizeDelta: {x: 279.98, y: 169.59998}
+  m_AnchoredPosition: {x: 53.12, y: -104}
+  m_SizeDelta: {x: 281.58, y: 169.59998}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1454755661
 MonoBehaviour:
@@ -5929,7 +5936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nuclear Soup
+  m_text: Nucleon Soup
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce447543a4ca9764a93d507b199935d8, type: 2}
   m_sharedMaterial: {fileID: -976259489753435230, guid: ce447543a4ca9764a93d507b199935d8, type: 2}
@@ -6201,7 +6208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 141, y: -395}
+  m_AnchoredPosition: {x: 66, y: -395}
   m_SizeDelta: {x: 165, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1674432013

@@ -88,8 +88,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Player p = player.GetComponent<Player>();
+        int protons = p.currentNucleus.protons;
+        int neutrons = p.getNeutrons();
         GameTimer.text = timer.ToString("000");
-        if (timer <= 0)
+        if (timer <= 0 || (protons == 10 && (neutrons == 10 || neutrons == 11 || neutrons == 12)))
         {
             GameOver();
             return;
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour
         Player p = player.GetComponent<Player>();
         int protons = p.currentNucleus.protons;
         int neutrons = p.getNeutrons();
-        if (protons == 10 && (neutrons == 20 || neutrons == 21 || neutrons == 22))
+        if (protons == 10 && (neutrons == 10 || neutrons == 11 || neutrons == 12))
         {
             stateText.text = "You've created a stable isotope of Neon!";
             finalResultText.text = "You Win";
