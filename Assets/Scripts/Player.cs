@@ -58,8 +58,6 @@ public class Player : MonoBehaviour
 
         if (decayTime <= 0 && currentNucleus.decayType[numNeutrons - currentNucleus.baseNeutrons] != "Stable")
         {
-            print("Decay Called");
-
             string decayType = currentNucleus.decayType[numNeutrons - currentNucleus.baseNeutrons];
             List<GameObject> nucleonsToChange = new List<GameObject>();
             switch (decayType)

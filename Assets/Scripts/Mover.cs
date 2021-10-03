@@ -26,6 +26,8 @@ public class Mover : MonoBehaviour
 
     public static event Action<Mover> nucleonAdded;
 
+    private GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,18 @@ public class Mover : MonoBehaviour
         if (this.transform.parent != null)
         {
             coreNucleon = true;
+        }
+        player = GameManager.instance().getPlayer();
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        if (Mathf.Abs((player.transform.position - this.transform.position).magnitude) > 30)
+        {
+            Destroy(this.gameObject);
         }
     }
 

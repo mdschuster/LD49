@@ -22,10 +22,15 @@ public class SpawnManager : MonoBehaviour
     public float spawnOffset;
 
 
+    public float particleTimeToSpawn;
+    private float particleSpawnTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
         spawnTime = timeToSpawn;
+        particleSpawnTime = particleTimeToSpawn;
     }
 
     // Update is called once per frame
@@ -57,6 +62,33 @@ public class SpawnManager : MonoBehaviour
 
             spawnTime = timeToSpawn;
         }
+
+        if (particleSpawnTime <= 0)
+        {
+
+            float randomAngle = Random.Range(-180, 180) * Mathf.Deg2Rad;
+            Vector3 dir = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle), 0f);
+
+            //normalize and extend vector to far away
+            dir = dir.normalized * spawnOffset;
+
+            //shift by center of spawnCenter object
+            Vector3 spawnPos = spawnCenter.transform.position + dir;
+
+            //instantiate neutron or proton
+            float randNum = Random.Range(0f, 1f);
+            GameObject toSpawn = (randNum < 0.3f) ? electron : neutrino;
+            GameObject go = Instantiate(toSpawn, spawnPos, Quaternion.identity);
+
+
+            //set movement direction of newly spawned particle
+            Vector3 randomOffset = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f), 0f);
+
+            particleSpawnTime = particleTimeToSpawn;
+        }
+
+
+        particleSpawnTime -= Time.deltaTime;
         spawnTime -= Time.deltaTime;
     }
 }

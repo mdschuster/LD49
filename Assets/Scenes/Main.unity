@@ -5760,11 +5760,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neutron: {fileID: 974808204918703621, guid: 2b611f567f09c9e4ca63f74bd101b702, type: 3}
   proton: {fileID: 1362468450303566278, guid: 7b654629e1d00ce49b9038c52b049541, type: 3}
-  electron: {fileID: 0}
-  neutrino: {fileID: 0}
-  timeToSpawn: 2
+  electron: {fileID: 4405352124326971783, guid: 183e11c2590c6ed4581d057064a293db, type: 3}
+  neutrino: {fileID: 5741445770852784990, guid: ca67d320b93ca9c449e0a7304fe0adae, type: 3}
+  timeToSpawn: 1
   spawnCenter: {fileID: 306283468}
   spawnOffset: 25
+  particleTimeToSpawn: 0.5
 --- !u!4 &1236107222
 Transform:
   m_ObjectHideFlags: 0

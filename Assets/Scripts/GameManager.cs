@@ -102,6 +102,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public GameObject getPlayer()
+    {
+        return player;
+    }
+
 
 
 }
