@@ -36,6 +36,15 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance().gameOver == false)
+        {
+            spawnNucleons();
+            spawnParticles();
+        }
+    }
+
+    private void spawnNucleons()
+    {
         if (spawnTime <= 0)
         {
             //pick random direction from spawn center (angle) and turn it into a heading
@@ -62,7 +71,12 @@ public class SpawnManager : MonoBehaviour
 
             spawnTime = timeToSpawn;
         }
+        spawnTime -= Time.deltaTime;
+    }
 
+
+    public void spawnParticles()
+    {
         if (particleSpawnTime <= 0)
         {
 
@@ -89,6 +103,5 @@ public class SpawnManager : MonoBehaviour
 
 
         particleSpawnTime -= Time.deltaTime;
-        spawnTime -= Time.deltaTime;
     }
 }

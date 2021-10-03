@@ -40,9 +40,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        getMovement();
-        decay();
-        updateDecayText();
+        if (GameManager.instance().gameOver == false)
+        {
+            getMovement();
+            decay();
+            updateDecayText();
+        }
+        else
+        {
+            moveAmount = Vector3.zero;
+        }
     }
 
     /// <summary>
@@ -367,5 +374,10 @@ public class Player : MonoBehaviour
         isotopeDict.Add(21, "Scandium");
         isotopeDict.Add(22, "Titanium");
         isotopeDict.Add(23, "Vanadium");
+    }
+
+    public int getNeutrons()
+    {
+        return numNeutrons;
     }
 }

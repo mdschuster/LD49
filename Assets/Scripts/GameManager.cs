@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,6 +51,23 @@ public class GameManager : MonoBehaviour
     public GameObject neutrinoPrefab;
     public GameObject electronPrefab;
 
+    [Header("Game Timer")]
+    public TMP_Text GameTimer;
+    public int timeSeconds = 120;
+    private float timer;
+
+
+
+
+    [Header("Game Over")]
+    [System.NonSerialized]
+    public bool gameOver;
+
+    public TMP_Text stateText;
+    public TMP_Text finalResultText;
+
+    public GameObject gameOverCanvas;
+
 
 
     // Start is called before the first frame update
@@ -60,6 +78,44 @@ public class GameManager : MonoBehaviour
         neutronValue.text = "0";
         protonValue.text = "1";
         isotopeValue.text = "Hydrogen-1";
+        timer = timeSeconds;
+        gameOver = false;
+        gameOverCanvas.SetActive(false);
+    }
+
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        GameTimer.text = timer.ToString("000");
+        if (timer <= 0)
+        {
+            GameOver();
+            return;
+        }
+
+        timer -= Time.deltaTime;
+    }
+
+    private void GameOver()
+    {
+        //stop spawning or disable player sphere collider and stop player from moving
+        gameOver = true;
+        gameOverCanvas.SetActive(true);
+        Player p = player.GetComponent<Player>();
+        int protons = p.currentNucleus.protons;
+        int neutrons = p.getNeutrons();
+        if (protons == 10 && (neutrons == 20 || neutrons == 21 || neutrons == 22))
+        {
+            stateText.text = "You've created a stable isotope of Neon!";
+            finalResultText.text = "You Win";
+        }
+        else
+        {
+            stateText.text = "You couldn't get to stable isotope of Neon";
+            finalResultText.text = "Game Over";
+        }
     }
 
 
@@ -105,6 +161,11 @@ public class GameManager : MonoBehaviour
     public GameObject getPlayer()
     {
         return player;
+    }
+
+    public void onMenuClick()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 
