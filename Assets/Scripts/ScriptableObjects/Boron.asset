@@ -10,18 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21853f8d35a410f4497c1d1356ccb059, type: 3}
-  m_Name: Hydrogen
+  m_Name: Boron
   m_EditorClassIdentifier: 
-  nucleus: Hydrogen
-  protons: 1
+  nucleus: Boron
+  protons: 5
   baseNeutrons: 0
-  neutrons: 00000000010000000200000003000000040000000500000006000000
+  neutrons: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000
   decayType:
+  - p
+  - p
+  - p
+  - B+
+  - p
   - Stable
   - Stable
   - B-
+  - B-
+  - B-
+  - B-
+  - n
+  - B-
+  - n
+  - B-
   - n
   - 2n
-  - 3n
-  - 4n
-  decayTime: ffffffffffffffff0f0000000f0000000f0000000f0000000f000000
+  decayTime: 0000000000000000030000000500000003000000ffffffffffffffff04000000040000000400000004000000030000000400000003000000030000000300000003000000

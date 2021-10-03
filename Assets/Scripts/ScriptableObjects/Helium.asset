@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nucleus: Helium
   protons: 2
+  baseNeutrons: 0
   neutrons: 000000000100000002000000030000000400000005000000060000000700000008000000
   decayType:
   - p
@@ -25,4 +26,4 @@ MonoBehaviour:
   - B-
   - n
   - 2n
-  decayTime: 05000000ffffffffffffffff0500000007000000050000000a0000000500000005000000
+  decayTime: 03000000ffffffffffffffff030000000500000003000000070000000300000003000000

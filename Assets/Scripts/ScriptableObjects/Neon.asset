@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21853f8d35a410f4497c1d1356ccb059, type: 3}
+  m_Name: Neon
+  m_EditorClassIdentifier: 
+  nucleus: Neon
+  protons: 10
+  baseNeutrons: 0
+  neutrons: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000
+  decayType:
+  - p
+  - p
+  - p
+  - p
+  - p
+  - 2p
+  - 2p
+  - 2p
+  - 2p
+  - 2p
+  - Stable
+  - Stable
+  - Stable
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  - B-
+  decayTime: 00000000000000000000000000000000000000000300000003000000050000000a0000000f000000ffffffffffffffffffffffff0e0000000f00000008000000080000000600000006000000060000000500000004000000030000000300000003000000

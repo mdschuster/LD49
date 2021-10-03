@@ -167,6 +167,31 @@ public class Player : MonoBehaviour
 
     }
 
+    private void decayProtonNow()
+    {
+        foreach (Mover m in children)
+        {
+            if (m.nucleonType == "proton" && m.coreNucleon == false)
+            {
+                m.decay();
+                removeNucleon(m);
+                break;
+            }
+        }
+    }
+    private void decayNeutronNow()
+    {
+        foreach (Mover m in children)
+        {
+            if (m.nucleonType == "neutron" && m.coreNucleon == false)
+            {
+                m.decay();
+                removeNucleon(m);
+                break;
+            }
+        }
+    }
+
     private void getMovement()
     {
         moveAmount.x = Input.GetAxisRaw("Horizontal");
@@ -184,12 +209,21 @@ public class Player : MonoBehaviour
         if (nucleon.nucleonType == "proton")
         {
             numProtons++;
+            if (numProtons > 10)
+            {
+                //wee need to decay immediately
+                decayProtonNow();
+            }
             GameManager.instance().changeProtonText(numProtons);
             changeCurrentNucleus();
         }
         else if (nucleon.nucleonType == "neutron")
         {
             numNeutrons++;
+            if (numNeutrons > currentNucleus.neutrons.Count)
+            {
+                decayNeutronNow();
+            }
             GameManager.instance().changeNeutronText(numNeutrons);
         }
         children.Add(nucleon);
