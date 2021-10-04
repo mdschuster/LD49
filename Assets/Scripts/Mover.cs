@@ -46,7 +46,7 @@ public class Mover : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Mathf.Abs((player.transform.position - this.transform.position).magnitude) > 30)
+        if (Mathf.Abs((player.transform.position - this.transform.position).magnitude) > 50)
         {
             Destroy(this.gameObject);
         }
@@ -133,7 +133,7 @@ public class Mover : MonoBehaviour
     public void decay()
     {
         currentState = ParticleState.DECAY;
-        rigidbody.isKinematic = true;
+        //rigidbody.isKinematic = true;
         speed = 30;
         transform.parent = null;
         GetComponent<SphereCollider>().isTrigger = true;
@@ -147,5 +147,10 @@ public class Mover : MonoBehaviour
     public void setNucleus()
     {
         currentState = ParticleState.NUCLEUS;
+    }
+
+    public static void resetNucleonAdded()
+    {
+        nucleonAdded = null;
     }
 }

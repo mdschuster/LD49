@@ -17,10 +17,6 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     public static GameManager instance()
@@ -73,6 +69,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Awake();
+        Mover.resetNucleonAdded();
         player = createPlayer();
         vcam.Follow = player.transform;
         neutronValue.text = "0";
@@ -168,6 +166,7 @@ public class GameManager : MonoBehaviour
 
     public void onMenuClick()
     {
+        _instance = null;
         SceneManager.LoadScene("Menu");
     }
 
